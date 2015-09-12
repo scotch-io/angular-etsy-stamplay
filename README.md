@@ -1,0 +1,1 @@
+# angular-etsy-stamplay
