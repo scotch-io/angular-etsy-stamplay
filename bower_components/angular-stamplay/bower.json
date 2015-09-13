@@ -1,0 +1,22 @@
+{
+  "name": "angular-stamplay",
+  "main": "angular-stamplay.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Stamplay/angular-stamplay",
+  "authors": [
+    "Alessandro Oliveri alessandro.oliveri@gmail.com"
+  ],
+  "description": "angularjs stamplay-js-sdk wrapper",
+  "keywords": [
+    "stamplay",
+    "angular-stamplay"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

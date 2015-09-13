@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Etsy Stamplay</title>
+
+	<!-- required by ui-router -->
+	<base href="/">
+
+	<!-- CSS -->
+	<!-- load up bootswatch-cerulean and our custom styles -->
+	<link rel="stylesheet" href="./bower_components/bootswatch/cerulean/bootstrap.min.css">
+	<link rel="stylesheet" href="./style.css">
+
+	<!-- JS -->
+	<!-- load the stamplay sdk and configure it -->
+	<script src="./bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
+	<script>
+		Stamplay.init('angularetsy'); 	// initiate stamplay app with app name
+	</script>
+
+	<!-- load our other JS dependencies -->
+	<script src="./bower_components/angular/angular.min.js"></script>
+	<script src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
+
+	<!-- load all the parts for our custom angular app -->
+	<!-- youd probably want to compile all this with a build system like gulp -->
+	<!-- load our angular components -->
+	<script src="./app/components/listings/listings.js"></script>
+	<script src="./app/components/shop/shop.js"></script>
+	<script src="./app/components/product/product.js"></script>
+	<script src="./app/components/checkout/checkout.js"></script>
+	<script src="./app/components/profile/profile.js"></script>
+
+	<!-- load our angular services -->
+	<script src="./app/shared/ProductService.js"></script>
+	<script src="./app/shared/UserService.js"></script>
+	<script src="./app/shared/OrderService.js"></script>
+	<script src="./app/shared/ShopService.js"></script>
+
+	<!-- load our core angular app -->
+	<script src="./app/app.routes.js"></script>
+	<script src="./app/app.js"></script>
+
+</head>
+<body ng-app="etsyApp" ng-controller="MainController as main">
+
+	<!-- HEADER AND NAV -->
+	<header>
+		<nav id="main-nav" class="navbar">
+		<div class="container">
+
+			<!-- site logo -->
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">
+					<span class="glyphicon glyphicon-heart-empty"></span>
+					Shop City
+				</a>
+			</div>
+
+			<!-- search form -->
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+
+			<!-- logged in navigation -->
+			<!-- todo: check for logged in user -->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Admin</a></li>
+				<li><a href="#">Purchases</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#">Logout</a></li>
+			</ul>
+
+			<!-- not logged in navigation -->
+	        <ul class="nav navbar-nav navbar-right">
+	            <li><a href="#">Register</a></li>
+	            <li><a href="#">Sign in</a></li>
+	        </ul>
+		</div>
+		</nav>
+	</header>
+
+	<!-- ui-router will inject our component views here -->
+	<main class="container">
+		<div ui-view></div>
+	</main>
+
+	<!-- FOOTER -->
+	<footer class="text-center">
+		&copy; 2015 Shop City
+	</footer>
+	
+</body>
+</html>

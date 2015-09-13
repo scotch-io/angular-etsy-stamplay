@@ -1,0 +1,16 @@
+{
+  "name": "angular-etsy-stamplay",
+  "version": "0.0.0",
+  "homepage": "https://github.com/scotch-io/angular-etsy-stamplay",
+  "authors": [
+    "Chris Sevilleja <chris@scotch.io>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

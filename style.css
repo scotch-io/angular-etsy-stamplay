@@ -1,0 +1,41 @@
+/* main styles ------------------------------------------*/
+body 		{
+	background:#EFEFEF;
+}
+
+h1, h2, h3, h4, h5, h6 	{
+	font-family:Georgia, serif;
+}
+
+/* header ---------------------------------------------- */
+#main-nav 	{
+	background:#FFF;
+	background-image:none;
+	border:none;
+	border-bottom:1px solid #E1E3DF;
+	box-shadow:none;
+}
+
+/* logo */
+#main-nav .navbar-brand 	{
+	color:#f45800;
+	font-size:30px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+/* nav links */
+#main-nav a 	{
+	font-size:18px;
+	padding-bottom:30px;
+	padding-top:30px;
+}
+#main-nav a:hover 	{
+	background:none;
+}
+
+/* header search form */
+#main-nav .navbar-form 	{
+	padding-top:16px;
+	padding-bottom:10px;
+}
