@@ -22,15 +22,18 @@
 	<!-- load our other JS dependencies -->
 	<script src="./bower_components/angular/angular.min.js"></script>
 	<script src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
+	<script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 	<!-- load all the parts for our custom angular app -->
 	<!-- youd probably want to compile all this with a build system like gulp -->
 	<!-- load our angular components -->
-	<script src="./app/components/listings/listings.js"></script>
+	<script src="./app/components/home/home.js"></script>
 	<script src="./app/components/shop/shop.js"></script>
 	<script src="./app/components/product/product.js"></script>
 	<script src="./app/components/checkout/checkout.js"></script>
 	<script src="./app/components/profile/profile.js"></script>
+	<script src="./app/components/admin/admin.js"></script>
+	<script src="./app/components/authenticate/authenticate.js"></script>
 
 	<!-- load our angular services -->
 	<script src="./app/shared/ProductService.js"></script>
@@ -52,7 +55,7 @@
 
 			<!-- site logo -->
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">
+				<a ui-sref="home" class="navbar-brand">
 					<span class="glyphicon glyphicon-heart-empty"></span>
 					Shop City
 				</a>
@@ -68,17 +71,16 @@
 
 			<!-- logged in navigation -->
 			<!-- todo: check for logged in user -->
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Admin</a></li>
-				<li><a href="#">Purchases</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Logout</a></li>
+			<ul class="nav navbar-nav navbar-right" ng-show="currentUser.id">
+				<li><a ui-sref="admin">Admin</a></li>
+				<li><a ui-sref="profile">Profile</a></li>
+				<li><a ng-click="main.logout()">Logout</a></li>
 			</ul>
 
 			<!-- not logged in navigation -->
-	        <ul class="nav navbar-nav navbar-right">
-	            <li><a href="#">Register</a></li>
-	            <li><a href="#">Sign in</a></li>
+	        <ul class="nav navbar-nav navbar-right" ng-show="!currentUser.id">
+	            <li><a ui-sref="authenticate">Register</a></li>
+	            <li><a ui-sref="authenticate">Sign in</a></li>
 	        </ul>
 		</div>
 		</nav>

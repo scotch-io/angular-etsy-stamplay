@@ -1,0 +1,61 @@
+<div class="row">
+
+	<!-- SIGNUP =============================== -->
+	<div class="col-sm-6">
+		<div class="page-header text-center">
+			<h2>Sign Up</h2>
+		</div>
+
+		<!-- signup button to use facebook -->
+		<p>
+			<a class="btn btn-block btn-primary" href="/auth/v1/facebook/connect">Sign Up with Facebook</a>
+		</p>
+
+		<!-- form will use authenticate.signup on submit -->
+		<form id="signupForm" ng-submit="authenticate.signup()">
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control" ng-model="authenticate.signupData.displayName" required>
+			</div>
+
+			<div class="form-group">
+				<label>Email</label>
+				<input type="email" class="form-control" ng-model="authenticate.signupData.email" required>
+			</div>
+
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" ng-model="authenticate.signupData.password" required>
+			</div>
+
+			<button type="submit" class="btn btn-info">Sign Up</button>
+		</form>
+	</div>
+
+	<!-- LOGIN ================================ -->
+	<div class="col-sm-6">
+		<div class="page-header text-center">
+			<h2>Login</h2>
+		</div>
+
+		<!-- signup button to use facebook -->
+		<p>
+			<a class="btn btn-block btn-primary" href="/auth/v1/facebook/connect">Login with Facebook</a>
+		</p>
+
+		<!-- form will use authenticate.login on submit -->
+		<form id="loginForm" ng-submit="authenticate.login()">
+			<div class="form-group">
+				<label>Email</label>
+				<input type="email" class="form-control" ng-model="authenticate.loginData.email" required>
+			</div>
+
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" ng-model="authenticate.loginData.password" required>
+			</div>
+
+			<button type="submit" class="btn btn-info">Login</button>
+		</form>
+	</div>
+</div>

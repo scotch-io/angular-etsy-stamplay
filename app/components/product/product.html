@@ -1,0 +1,69 @@
+<div class="listing-wrap">
+	<div class="row">
+		
+		<!-- main content (images, description, comments) -->
+		<div class="col-sm-7">
+		<div class="listing-main">
+
+			<!-- the images (show the bears if there are no images -->
+			<div class="listing-images">
+				<img 
+					ng-repeat="picture in product.listing.pictures" 
+					ng-show="product.listing.pictures"
+					ng-src="{{ picture.src }}"
+					class="img-responsive">
+				<img 
+					ng-show="!product.listing.pictures"
+					src="http://placebear.com/g/600/400" 
+					class="img-responsive">
+			</div>
+
+			<!-- the description -->
+			<div class="listing-description">
+				{{ product.listing.description }}
+			</div>
+
+			<!-- the comments (ng-repeat over the comments) -->
+			<div class="listing-comments">
+				<div class="comment" ng-repeat="comment in product.listing.actions.comments">
+					{{ comment.text }}
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+		<!-- the extra content (title, price, options, add to cart) -->
+		<div class="col-sm-5">
+		<div class="listing-extra">
+			
+			<!-- the extras info -->
+			<div class="listing-info">
+				<h1>{{ product.listing.name }}</h1>
+
+				<!-- the price -->
+				<div class="listing-price">
+					{{ product.listing.price | currency }}
+				</div>
+
+				<!-- loop over the colors -->
+				<ul class="listing-colors">
+					<li ng-repeat="color in product.listing.color">{{ color }}</li>
+				</ul>
+
+				<!-- loop over the sizes -->
+				<ul class="listing-sizes">
+					<li ng-repeat="size in product.listing.size">{{ size }}</li>
+				</ul>
+			</div>
+
+			<!-- buy now button links to checkout route -->
+			<a ui-sref="checkout({ id: product.listing.id })" class="listing-buy btn btn-success btn-block">
+				Buy Now
+			</a>
+
+		</div>
+		</div>
+
+	</div>
+</div>

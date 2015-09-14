@@ -7,6 +7,9 @@ h1, h2, h3, h4, h5, h6 	{
 	font-family:Georgia, serif;
 }
 
+/* footer ---------------------------------------------- */
+footer 			{ padding-top:50px; }
+
 /* header ---------------------------------------------- */
 #main-nav 	{
 	background:#FFF;
@@ -22,6 +25,7 @@ h1, h2, h3, h4, h5, h6 	{
 	font-size:30px;
 	padding-top:20px;
 	padding-bottom:20px;
+	font-family:Georgia, serif;
 }
 
 /* nav links */
@@ -38,4 +42,78 @@ h1, h2, h3, h4, h5, h6 	{
 #main-nav .navbar-form 	{
 	padding-top:16px;
 	padding-bottom:10px;
+}
+
+/* make sure that our a tags have the cursor */
+a[ui-sref],
+a[ng-click]  { cursor:pointer; }
+
+/* products ------------------------------------ */
+.product-box 	{
+	background:#FFF;
+	border-color:#CACACA;
+	border-bottom-color:#DADADA;
+	box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.15);
+	border-radius:3px;
+	padding:8px;
+}
+
+.product-img img {
+	display:block;
+	margin:0 auto 10px;
+	max-width:100%;
+}
+
+.product-content a 	{
+	text-align:center;
+	font-size:14px;
+	color:#696969;
+	display:block;
+}
+
+.product-content .listing-price {
+	text-align:right;
+	color:#78C042;
+	font-size:12px;
+}
+
+/* listing ------------------------------------- */
+.listing-wrap 			{
+	background:#FFF;
+	border:1px solid #ECECEC;
+	border-radius:3px;
+	padding:30px;
+}
+
+.listing-images img		{
+	border-radius:3px;
+	margin-bottom:20px;
+}
+
+.listing-description {
+	font-size:16px;
+	margin-bottom:20px;
+}
+
+.listing-comments 	{
+	background:#FEFEFE;
+	border-radius:3px;
+	padding:20px;
+}
+
+.listing-comments .comment 	{
+	margin-bottom:15px;
+}
+
+.listing-extra 		{
+	border:10px solid #E4F3D9;
+	border-radius:3px;
+	padding:20px;
+}
+
+.listing-extra h1 {
+	font-size:20px;
+	line-height:1.2;
+	color:#333;
+	margin:0 0 15px;
 }

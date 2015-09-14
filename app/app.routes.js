@@ -26,14 +26,14 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 
 		// shop page
 		.state('shop', {
-			url					: '/shop/{shop_name}',
+			url					: '/shop/{name}',
 			templateUrl	: '/app/components/shop/shop.html',
 			controller	: 'ShopController as shop'
 		})
 
 		// product page (a child of shop)
 		.state('product', {
-			url					: '/listing/{product_name}',
+			url					: '/listing/{id}/{name}',
 			templateUrl	: '/app/components/product/product.html',
 			controller	: 'ProductController as product'
 		})
@@ -49,12 +49,12 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('profile', {
 			url					: '/profile/{user_name}',
 			templateUrl	: '/app/components/profile/profile.html',
-			controller	: 'profileController as profile'
+			controller	: 'ProfileController as profile'
 		})
 
 		// checkout page
 		.state('checkout', {
-			url					: '/checkout',
+			url					: '/checkout/{id}',
 			templateUrl	: '/app/components/checkout/checkout.html',
 			controller	: 'CheckoutController as checkout'
 		})

@@ -1,0 +1,70 @@
+<div class="page-header text-center">
+	<h1>Admin Tools</h1>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+	<div class="well">
+		<!-- create a product form -->
+		<div class="page-header text-center">
+			<h3>Create a Product</h3>
+		</div>
+
+		<form id="createProductForm" ng-submit="admin.createProduct()">
+			<!-- name -->
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control" ng-model="admin.productData.name" required>
+			</div>
+
+			<!-- price -->
+			<div class="form-group">
+				<label>Price</label>
+				<input type="text" class="form-control" ng-model="admin.productData.price" required>
+			</div>
+
+			<!-- category -->
+			<div class="form-group">
+				<label>Category</label>
+				<input type="text" class="form-control" ng-model="admin.productData.category">
+			</div>
+
+			<!-- pictures -->
+			<div class="form-group">
+				<label>Pictures</label>
+				<input type="text" class="form-control" ng-model="admin.productData.pictures">
+			</div>
+
+			<!-- colors -->
+			<div class="form-group">
+				<label>Colors</label>
+				<select class="form-control" ng-model="admin.productData.color" multiple>
+					<option value="red">Red</option>
+					<option value="blue">Blue</option>
+					<option value="yellow">Yellow</option>
+				</select>
+			</div>
+
+			<!-- sizes -->
+			<div class="form-group">
+				<label>Sizes</label>
+				<select class="form-control" ng-model="admin.productData.size" multiple>
+					<option value="small">Small</option>
+					<option value="medium">Medium</option>
+					<option value="large">Large</option>
+				</select>
+			</div>
+
+			<!-- show the success message and a link -->
+			<div ng-show="admin.successMessage">
+				{{ admin.successMessage }} 
+				<a ui-sref="product({ id: admin.newProductId, name: admin.newProductName })">View it now!</a>
+			</div>
+
+			<!-- submit -->
+			<button type="submit" class="btn btn-primary btn-block">Create Product</button>
+		</form>
+
+	</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="page-header text-center">
+	<h1>Top Products</h1>
+</div>
+
+<div class="row">
+	
+	<!-- loop over home.products here -->
+	<div class="col-sm-3" ng-repeat="product in home.products">
+		<div class="product-box">
+
+			<!-- the product image -->
+			<a class="product-img" ui-sref="product({ id: product.instance.id, name: product.instance.name })">
+				<img ng-src="{{ product.instance.pictures[0] }}" ng-show="product.instance.pictures">
+				<img src="http://placebear.com/g/250/170" ng-show="!product.instance.pictures">
+			</a>
+
+			<!-- the product content like title -->
+			<div class="product-content">
+				<a ui-sref="product({ id: product.instance.id, name: product.instance.name })">
+					{{ product.instance.name }}
+				</a>
+				<div class="listing-price">
+					{{ product.instance.price | currency }}
+				</div>
+			</div>
+		</div>	
+	</div>
+
+</div>
