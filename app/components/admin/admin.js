@@ -9,6 +9,15 @@ function AdminController(Product) {
 	admin.createProduct = createProduct;
 
 	/**
+	 * Get all the product categories so we can show them in our form
+	 */
+	Product.getCategories()
+		.then(function(data) {
+			console.log(data.instance);
+			admin.categories = data.instance;
+		});
+
+	/**
 	 * Create a new product
 	 */
 	function createProduct() {

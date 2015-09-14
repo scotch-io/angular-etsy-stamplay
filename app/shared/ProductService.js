@@ -11,7 +11,8 @@ function ProductService($stamplay, $q) {
 		update: update,
 		destroy: destroy,
 		getComments: getComments,
-		comment: comment
+		comment: comment,
+		getCategories: getCategories
 	};
 
 	/** 
@@ -22,7 +23,7 @@ function ProductService($stamplay, $q) {
 
 		// instanticate a new product collection from the stamplay js sdk
 		var products = new Stamplay.Cobject('products').Collection;
-		products.fetch()
+		products.populate().fetch()
 			.then(function() {
 				def.resolve(products);
 			});
@@ -40,7 +41,7 @@ function ProductService($stamplay, $q) {
 		var product = new Stamplay.Cobject('products').Model;
 
 		// get the product in question and return it
-		product.fetch(id)
+		product.populate().fetch(id)
 			.then(function() {
 				def.resolve(product);
 			});
@@ -152,5 +153,50 @@ function ProductService($stamplay, $q) {
 
 		return def.promise;
 	}	
+
+	/**
+	 * Get all the product categories
+	 */
+	function getCategories() {
+		var def = $q.defer();
+
+		// instanticate a new product collection from the stamplay js sdk
+		var products = new Stamplay.Cobject('categories').Collection;
+		products.fetch()
+			.then(function() {
+				def.resolve(products);
+			});
+
+		return def.promise;
+	}
+
+	/**
+	 * Create a picture
+	 */
+	function createPicture(files) {
+		// loop over the files and send them to stamplay
+		angular.forEach(files, function(file) {
+			if (file && !file.$error) {
+     		file.upload = Upload.upload({
+              url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+              file: file
+            });
+
+            file.upload.then(function (response) {
+              $timeout(function () {
+                file.result = response.data;
+              });
+            }, function (response) {
+              if (response.status > 0)
+                $scope.errorMsg = response.status + ': ' + response.data;
+            });
+
+            file.upload.progress(function (evt) {
+              file.progress = Math.min(100, parseInt(100.0 * 
+                                       evt.loaded / evt.total));
+            });
+  		}   
+		});
+	}
 
 }

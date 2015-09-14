@@ -26,13 +26,15 @@
 			<!-- category -->
 			<div class="form-group">
 				<label>Category</label>
-				<input type="text" class="form-control" ng-model="admin.productData.category">
+				<select class="form-control" ng-model="admin.productData.category" 
+					ng-options="category.instance.id as category.instance.name for category in admin.categories">					
+				</select>
 			</div>
 
 			<!-- pictures -->
 			<div class="form-group">
 				<label>Pictures</label>
-				<input type="text" class="form-control" ng-model="admin.productData.pictures">
+				<input type="file" class="form-control" ng-model="admin.productData.pictures" multiple>
 			</div>
 
 			<!-- colors -->
