@@ -1,8 +1,8 @@
 angular	
 	.module('ProductService', [])
-	.factory('Product', ['$stamplay', '$q', 'Upload', ProductService]);
+	.factory('Product', ['$stamplay', '$q', '$http', ProductService]);
 
-function ProductService($stamplay, $q, Upload) {
+function ProductService($stamplay, $q, $http) {
 
 	return {
 		all: all,
@@ -162,16 +162,27 @@ function ProductService($stamplay, $q, Upload) {
 		var def = $q.defer();
 
 		// create an object for the ids
-		var pictureIDs = {};
+		var pictureIDs = [];
 
 		// loop over the files and upload them via the Stamplay API
 		angular.forEach(files, function(file) {
-			Upload.upload({
+
+			// create a new formdata
+			var fd = new FormData();
+			fd.append('photo', file);
+
+			// process the upload
+			$http({
+				method: 'POST',
 				url: 'https://angularetsy.stamplayapp.com/api/cobject/v1/pictures',
-				file: file
+				data: fd,
+				headers: { 'Content-Type': undefined },
+				photo: file
 			})
 				.then(function(response) {
-					console.log(response);
+					// push the given id into the pictureIDs array
+					pictureIDs.push(response.data.id);
+					def.resolve({ pictures: pictureIDs });
 				});
 		});
 

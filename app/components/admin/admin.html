@@ -31,12 +31,23 @@
 				</select>
 			</div>
 
+			<!-- description -->
+			<div class="form-group">
+				<label>Description</label>
+				<textarea rows="5" class="form-control" ng-model="admin.productData.description" required></textarea>
+			</div>
+
 			<!-- pictures -->
 			<div class="form-group">
 				<label>Pictures</label>
-				<div class="btn btn-sm btn-primary" ngf-select="admin.uploadFiles($files)" multiple>
+				<div class="btn btn-sm btn-primary" ngf-select="admin.uploadFiles($files)" ng-model="pictures" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB" multiple>
 					Select Files
-				</div>
+				</div>				
+			</div>
+
+			<!-- show a preview -->
+			<div class="well" ng-show="pictures">
+				<img class="img-responsive" ngf-src="pictures">
 			</div>
 
 			<!-- colors -->
@@ -60,7 +71,7 @@
 			</div>
 
 			<!-- show the success message and a link -->
-			<div ng-show="admin.successMessage">
+			<div class="alert alert-success" ng-show="admin.successMessage">
 				{{ admin.successMessage }} 
 				<a ui-sref="product({ id: admin.newProductId, name: admin.newProductName })">View it now!</a>
 			</div>

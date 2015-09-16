@@ -23,11 +23,12 @@ function AdminController(Product) {
 	 * Store the ids into admin.productData.pictures
 	 */
 	function uploadFiles(files) {
-		// use our product service to pass the file to Stamplay
+
+		// use our product service to pass the files to Stamplay
 		Product.createPicture(files)
 			.then(function(data) {
-				console.log(data);
-				admin.productData.pictures.push(data.get('_id'));
+        // add the pictures array to our productData
+				admin.productData.pictures = data.pictures;
 			});
 	}
 
@@ -35,6 +36,8 @@ function AdminController(Product) {
 	 * Create a new product
 	 */
 	function createProduct() {
+
+		console.log(admin.productData);
 		// create the product
 		Product.create(admin.productData) 
 			.then(function(data) {

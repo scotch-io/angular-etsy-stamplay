@@ -10,7 +10,7 @@
 
 			<!-- the product image -->
 			<a class="product-img" ui-sref="product({ id: product.instance.id, name: product.instance.name })">
-				<img ng-src="{{ product.instance.pictures[0] }}" ng-show="product.instance.pictures">
+				<img ng-src="{{ product.instance.pictures[0].photo }}" ng-show="product.instance.pictures">
 				<img src="http://placebear.com/g/250/170" ng-show="!product.instance.pictures">
 			</a>
 
