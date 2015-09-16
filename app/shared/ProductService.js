@@ -1,8 +1,8 @@
 angular	
 	.module('ProductService', [])
-	.factory('Product', ['$stamplay', '$q', ProductService]);
+	.factory('Product', ['$stamplay', '$q', 'Upload', ProductService]);
 
-function ProductService($stamplay, $q) {
+function ProductService($stamplay, $q, Upload) {
 
 	return {
 		all: all,
@@ -158,15 +158,22 @@ function ProductService($stamplay, $q) {
 	/**
 	 * Create a picture
 	 */
-	function createPicture(file) {
+	function createPicture(files) {
 		var def = $q.defer();
 
-		var picture = new Stamplay.Cobject('pictures').Model;
-		picture.set('file', file);
-		picture.save()
-			.then(function() {
-				def.resolve(picture);
-			});
+		// create an object for the ids
+		var pictureIDs = {};
+
+		// loop over the files and upload them via the Stamplay API
+		angular.forEach(files, function(file) {
+			Upload.upload({
+				url: 'https://angularetsy.stamplayapp.com/api/cobject/v1/pictures',
+				file: file
+			})
+				.then(function(response) {
+					console.log(response);
+				});
+		});
 
 		return def.promise;
 	}

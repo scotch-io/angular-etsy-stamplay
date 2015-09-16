@@ -23,18 +23,12 @@ function AdminController(Product) {
 	 * Store the ids into admin.productData.pictures
 	 */
 	function uploadFiles(files) {
-
-		// create the images and bind the returned IDs to a productData object
-		admin.productData.pictures = {};
-		angular.forEach(files, function(file) {
-
-			// use our product service to pass the file to Stamplay
-			Product.createPicture(file)
-				.then(function(data) {
-					console.log(data);
-					admin.productData.pictures.push(data.get('_id'));
-				});
-		});
+		// use our product service to pass the file to Stamplay
+		Product.createPicture(files)
+			.then(function(data) {
+				console.log(data);
+				admin.productData.pictures.push(data.get('_id'));
+			});
 	}
 
 	/**
