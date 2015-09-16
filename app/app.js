@@ -11,7 +11,8 @@ angular
 		'app.profile',
 		'app.shop',
 		'UserService',
-		'ProductService'
+		'ProductService',
+		'ngFileUpload'
 	])
 	.controller('MainController', ['User', '$rootScope', MainController]);
 

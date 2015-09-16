@@ -10,7 +10,7 @@
 			<h3>Create a Product</h3>
 		</div>
 
-		<form id="createProductForm" ng-submit="admin.createProduct()">
+		<form id="createProductForm" ng-submit="admin.createProduct()" novalidate>
 			<!-- name -->
 			<div class="form-group">
 				<label>Name</label>
@@ -34,7 +34,9 @@
 			<!-- pictures -->
 			<div class="form-group">
 				<label>Pictures</label>
-				<input type="file" class="form-control" ng-model="admin.productData.pictures" multiple>
+				<div class="btn btn-sm btn-primary" ngf-select="admin.uploadFiles($files)" multiple>
+					Select Files
+				</div>
 			</div>
 
 			<!-- colors -->

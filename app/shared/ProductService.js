@@ -12,6 +12,7 @@ function ProductService($stamplay, $q) {
 		destroy: destroy,
 		getComments: getComments,
 		comment: comment,
+		createPicture: createPicture,
 		getCategories: getCategories
 	};
 
@@ -155,6 +156,22 @@ function ProductService($stamplay, $q) {
 	}	
 
 	/**
+	 * Create a picture
+	 */
+	function createPicture(file) {
+		var def = $q.defer();
+
+		var picture = new Stamplay.Cobject('pictures').Model;
+		picture.set('file', file);
+		picture.save()
+			.then(function() {
+				def.resolve(picture);
+			});
+
+		return def.promise;
+	}
+
+	/**
 	 * Get all the product categories
 	 */
 	function getCategories() {
@@ -168,35 +185,6 @@ function ProductService($stamplay, $q) {
 			});
 
 		return def.promise;
-	}
-
-	/**
-	 * Create a picture
-	 */
-	function createPicture(files) {
-		// loop over the files and send them to stamplay
-		angular.forEach(files, function(file) {
-			if (file && !file.$error) {
-     		file.upload = Upload.upload({
-              url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-              file: file
-            });
-
-            file.upload.then(function (response) {
-              $timeout(function () {
-                file.result = response.data;
-              });
-            }, function (response) {
-              if (response.status > 0)
-                $scope.errorMsg = response.status + ': ' + response.data;
-            });
-
-            file.upload.progress(function (evt) {
-              file.progress = Math.min(100, parseInt(100.0 * 
-                                       evt.loaded / evt.total));
-            });
-  		}   
-		});
-	}
+	}	
 
 }
