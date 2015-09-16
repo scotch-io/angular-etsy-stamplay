@@ -42,8 +42,9 @@ function ProductService($stamplay, $q, $http) {
 		var product = new Stamplay.Cobject('products').Model;
 
 		// get the product in question and return it
-		product.populate().fetch(id)
+		product.fetch(id, { populate: true })
 			.then(function() {
+				console.log(product.get('pictures'));
 				def.resolve(product);
 			});
 

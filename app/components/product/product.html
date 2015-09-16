@@ -8,9 +8,9 @@
 			<!-- the images (show the bears if there are no images -->
 			<div class="listing-images">
 				<img 
-					ng-repeat="picture in product.listing.pictures" 
-					ng-show="product.listing.pictures"
-					ng-src="{{ picture.src }}"
+					ng-repeat="picture in product.pictures" 
+					ng-show="picture.photo"
+					ng-src="{{ picture.photo }}"
 					class="img-responsive">
 				<img 
 					ng-show="!product.listing.pictures"
@@ -20,10 +20,12 @@
 
 			<!-- the description -->
 			<div class="listing-description">
+				<h3>Description</h3>
 				{{ product.listing.description }}
 			</div>
 
 			<!-- the comments (ng-repeat over the comments) -->
+			<h3>Comments</h3>
 			<div class="listing-comments">
 				<div class="comment" ng-repeat="comment in product.listing.actions.comments">
 					{{ comment.text }}

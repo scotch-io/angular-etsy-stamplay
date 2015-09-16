@@ -9,6 +9,7 @@ function ProductController(Product, $stateParams) {
 	Product.get($stateParams.id)
 		.then(function(data) {
 			// since this is a singular Stamplay model that was returned, we can bind instance directly
-			product.listing = data.instance;
+			product.listing  = data.instance;
+			product.pictures = data.get('pictures');
 		});
 }
