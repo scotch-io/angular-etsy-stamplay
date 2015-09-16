@@ -27,11 +27,12 @@ function AdminController(Product) {
 		// create the images and bind the returned IDs to a productData object
 		admin.productData.pictures = {};
 		angular.forEach(files, function(file) {
-			console.log(file);
 
+			// use our product service to pass the file to Stamplay
 			Product.createPicture(file)
 				.then(function(data) {
 					console.log(data);
+					admin.productData.pictures.push(data.get('_id'));
 				});
 		});
 	}
@@ -40,14 +41,6 @@ function AdminController(Product) {
 	 * Create a new product
 	 */
 	function createProduct() {
-		console.log('hello');
-
-		// create the images and bind the returned IDs to a productData object
-
-		angular.forEach(admin.pictures, function(file) {
-			
-		});
-
 		// create the product
 		Product.create(admin.productData) 
 			.then(function(data) {
