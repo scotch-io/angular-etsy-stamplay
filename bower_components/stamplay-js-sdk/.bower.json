@@ -38,6 +38,5 @@
   },
   "_source": "git://github.com/Stamplay/stamplay-js-sdk.git",
   "_target": "~1.2.9",
-  "_originalSource": "stamplay-sdk",
-  "_direct": true
+  "_originalSource": "stamplay-js-sdk"
 }

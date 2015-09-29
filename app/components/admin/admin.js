@@ -1,14 +1,22 @@
 angular
 	.module('app.admin', [])
-	.controller('AdminController', ['Product', AdminController]);
+	.controller('AdminController', ['Product', 'Order', AdminController]);
 
-function AdminController(Product) {
+function AdminController(Product, Order) {
 	var admin         = this;
 	admin.productData = {};  // the object to hold the data from our form
 
 	// bind the create product function to the controller
 	admin.createProduct = createProduct;
 	admin.uploadFiles   = uploadFiles;
+
+	/**
+	 * Get all the orders
+	 */
+	Order.history()
+		.then(function(data) {
+			admin.orders = data.instance;
+		});
 
 	/**
 	 * Get all the product categories so we can show them in our form

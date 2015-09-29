@@ -22,8 +22,8 @@ function ProductService($stamplay, $q, $http) {
 	function all() {
 		var def = $q.defer();
 
-		// instanticate a new product collection from the stamplay js sdk
-		var products = new Stamplay.Cobject('products').Collection;
+		// instantiate a new product collection from the stamplay js sdk
+		var products = new $stamplay.Cobject('products').Collection;
 		products.populate().fetch()
 			.then(function() {
 				def.resolve(products);
@@ -38,13 +38,12 @@ function ProductService($stamplay, $q, $http) {
 	function get(id) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
+		// instantiate a new product model from the stamplay js sdk
 		var product = new Stamplay.Cobject('products').Model;
 
 		// get the product in question and return it
 		product.fetch(id, { populate: true })
 			.then(function() {
-				console.log(product.get('pictures'));
 				def.resolve(product);
 			});
 
@@ -57,8 +56,8 @@ function ProductService($stamplay, $q, $http) {
 	function create(data) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
-		var product = new Stamplay.Cobject('products').Model;		
+		// instantiate a new product model from the stamplay js sdk
+		var product = new $stamplay.Cobject('products').Model;		
 		
 		// loop over the fields in data and update the product
 		angular.forEach(data, function(value, key) {
@@ -80,8 +79,8 @@ function ProductService($stamplay, $q, $http) {
 	function update(id, data) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
-		var product = new Stamplay.Cobject('products').Model;
+		// instantiate a new product model from the stamplay js sdk
+		var product = new $stamplay.Cobject('products').Model;
 		product.fetch(id)
 			.then(function() {
 				// loop over the fields in data and update the product
@@ -104,8 +103,8 @@ function ProductService($stamplay, $q, $http) {
 	function destroy(id) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
-		var product = new Stamplay.Cobject('products').Model;
+		// instantiate a new product model from the stamplay js sdk
+		var product = new $stamplay.Cobject('products').Model;
 		product.fetch(id)
 			.then(function() {
 				return product.destroy();
@@ -124,8 +123,8 @@ function ProductService($stamplay, $q, $http) {
 	function getComments(id) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
-		var product = new Stamplay.Cobject('products').Model;
+		// instantiate a new product model from the stamplay js sdk
+		var product = new $stamplay.Cobject('products').Model;
 		product.fetch(id)
 			.then(function() {
 				// a user will comment on the found product
@@ -141,8 +140,8 @@ function ProductService($stamplay, $q, $http) {
 	function comment(id, data) {
 		var def = $q.defer();
 
-		// instanticate a new product model from the stamplay js sdk
-		var product = new Stamplay.Cobject('products').Model;
+		// instantiate a new product model from the stamplay js sdk
+		var product = new $stamplay.Cobject('products').Model;
 		product.fetch(id)
 			.then(function() {
 				// a user will comment on the found product
@@ -196,8 +195,8 @@ function ProductService($stamplay, $q, $http) {
 	function getCategories() {
 		var def = $q.defer();
 
-		// instanticate a new product collection from the stamplay js sdk
-		var products = new Stamplay.Cobject('categories').Collection;
+		// instantiate a new product collection from the stamplay js sdk
+		var products = new $stamplay.Cobject('categories').Collection;
 		products.fetch()
 			.then(function() {
 				def.resolve(products);

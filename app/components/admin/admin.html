@@ -82,4 +82,30 @@
 
 	</div>
 	</div>
+
+	<div class="col-sm-6">
+	<div class="well">
+		<!-- create a product form -->
+		<div class="page-header text-center">
+			<h3>Order History</h3>
+		</div>
+
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Order #</th>
+					<th>Product</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in admin.orders">
+					<td>{{ order.instance._id }}</td>
+					<td>{{ order.instance.product[0].name }}</td>
+					<td>{{ order.instance.price | currency }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
 </div>

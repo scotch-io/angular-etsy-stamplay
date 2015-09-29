@@ -19,11 +19,18 @@
 		Stamplay.init('angularetsy'); 	// initiate stamplay app with app name
 	</script>
 
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script>
+	  Stripe.setPublishableKey('pk_test_2DPyHPUmEw5O14d35FocF5nF');
+	</script>
+
 	<!-- load our other JS dependencies -->
 	<script src="./bower_components/angular/angular.min.js"></script>
 	<script src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
 	<script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+	<script src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
+	<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
 	<!-- load all the parts for our custom angular app -->
 	<!-- youd probably want to compile all this with a build system like gulp -->
@@ -63,11 +70,21 @@
 			</div>
 
 			<!-- search form -->
-			<form class="navbar-form navbar-left">
+			<form class="search-form navbar-form navbar-left">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+				<div class="input-group">
+					<input
+						type="text"
+						class="form-control"
+						ng-model="main.query"
+						placeholder="Find a Product"
+						typeahead="product as product.name for product in main.searchProducts($viewValue)"
+						typeahead-on-select="main.searchPicked($item, $model, $label)">
+				    <div class="input-group-addon">
+				    	<span class="glyphicon glyphicon-search"></span>
+				    </div>
 				</div>
-				<button type="submit" class="btn btn-primary">Search</button>
+				</div>
 			</form>
 
 			<!-- logged in navigation -->

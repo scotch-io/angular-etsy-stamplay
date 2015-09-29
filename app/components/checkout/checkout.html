@@ -1,0 +1,86 @@
+<div class="checkout-page">
+
+	<div class="page-header text-center">
+		<h1>Purchase {{ checkout.product.name }}</h1>
+	</div>
+
+	<div class="row">
+	<div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+		
+		<form ng-submit="checkout.processPurchase()" novalidate>
+
+			<!-- BASIC PRODUCT INFO -->
+			<h4>Basic Info</h4>
+
+			<div class="form-group">
+				<p><strong>Product:</strong> {{ checkout.product.name }}</p>
+				<p><strong>Price:</strong> {{ checkout.product.price | currency }}</p>
+			</div>
+
+			<!-- COLOR OPTIONS. ONLY SHOW IF OPTIONS EXIST -->
+			<div class="form-group" ng-show="checkout.product.color">
+				<label>Color</label>
+				<select class="form-control" ng-model="checkout.orderData.color" 
+					ng-options="color for color in checkout.product.color">					
+				</select>
+			</div>
+
+			<!-- SIZE OPTIONS. ONLY SHOW IF OPTIONS EXIST -->
+			<div class="form-group" ng-show="checkout.product.size">
+				<label>Size</label>
+				<select class="form-control" ng-model="checkout.orderData.size" 
+					ng-options="size for size in checkout.product.size">					
+				</select>
+			</div>
+
+			<!-- BILLING INFO -->
+			<h4>Billing Info</h4>
+
+			<!-- CARDHOLDERS NAME -->
+			<div class="form-group">
+				<label>Cardholder Name</label>
+				<input type="text" class="form-control">
+			</div>
+
+			<!-- CREDIT CARD NUMBER -->
+			<div class="form-group">
+				<label>Card Number</label>
+				<input type="text" class="form-control" placeholder="4242 4242 4242 4242" ng-model="checkout.cardData.number">
+			</div>
+
+			<!-- CVC AND EXPIRATION -->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Card CVC</label>
+						<input type="text" class="form-control" placeholder="123" ng-model="checkout.cardData.cvc">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label>Card Expiration</label>
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="text" class="form-control" placeholder="08" ng-model="checkout.cardData.exp_month">
+							</div>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" placeholder="2020" ng-model="checkout.cardData.exp_year">
+							</div>
+						</div>						
+					</div>
+				</div>			
+			</div>			
+
+			<!-- SUCCESS MESSAGE -->
+			<div class="alert alert-success text-center" ng-show="checkout.successMessage">
+				{{ checkout.successMessage }}	
+			</div>
+
+			<!-- CHECKOUT BUTTON -->
+			<button type="submit" class="btn btn-success btn-block">Checkout</button>
+
+		</form>
+
+	</div>
+	</div>
+</div>

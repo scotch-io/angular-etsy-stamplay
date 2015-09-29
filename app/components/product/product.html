@@ -26,9 +26,36 @@
 
 			<!-- the comments (ng-repeat over the comments) -->
 			<h3>Comments</h3>
+
+			<!-- the comment form -->
+			<form ng-submit="product.createComment()" class="create-comment">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="What are you thinking?" ng-model="product.commentData.text">
+				</div>
+				<div class="text-right">
+					<button type="submit" class="btn btn-primary">Comment</button>
+				</div>
+			</form>
+
+			<!-- repeat over the comments -->
 			<div class="listing-comments">
-				<div class="comment" ng-repeat="comment in product.listing.actions.comments">
-					{{ comment.text }}
+				<div class="comment clearfix" ng-repeat="comment in product.listing.actions.comments | orderBy:'-dt_create'">
+
+					<!-- show an avatar if it exists or a placeholder image -->
+					<div class="comment-avatar pull-left">
+						<div ng-show="comment.picture">
+							<img ng-src="{{ comment.picture }}" class="img-responsive img-circle">
+						</div>
+						<div ng-show="!comment.picture">
+							<img src="http://placebear.com/g/45/45" class="img-responsive img-circle">
+						</div>
+						<strong>{{ comment.displayName }}</strong>
+					</div>
+
+					<div class="comment-content">						
+						<p>{{ comment.text }}</p>
+					</div>
+
 				</div>
 			</div>
 
@@ -60,8 +87,12 @@
 			</div>
 
 			<!-- buy now button links to checkout route -->
-			<a ui-sref="checkout({ id: product.listing.id })" class="listing-buy btn btn-success btn-block">
+			<!-- only show buy now button if logged in -->
+			<a ui-sref="checkout({ id: product.listing.id })" class="listing-buy btn btn-success btn-block" ng-show="currentUser.id">
 				Buy Now
+			</a>
+			<a ui-sref="authenticate" class="listing-buy btn btn-success btn-block" ng-show="!currentUser.id">
+				Login/Signup to Purchase
 			</a>
 
 		</div>

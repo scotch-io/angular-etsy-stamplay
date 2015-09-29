@@ -7,6 +7,9 @@ h1, h2, h3, h4, h5, h6 	{
 	font-family:Georgia, serif;
 }
 
+/* search form ------------------------------------------*/
+.search-form a:hover 	{ color:#333 !important; }
+
 /* footer ---------------------------------------------- */
 footer 			{ padding-top:50px; }
 
@@ -102,7 +105,16 @@ a[ng-click]  { cursor:pointer; }
 }
 
 .listing-comments .comment 	{
-	margin-bottom:15px;
+	padding-bottom:20px;
+	padding-top:20px;
+	border-bottom:1px solid #ECECEC;	
+}
+.comment .comment-avatar 	{
+	margin-right:30px;
+	text-align:center;
+}
+.comment .comment-avatar img	{
+	margin:0 auto 10px;
 }
 
 .listing-extra 		{

@@ -14,11 +14,13 @@
     "tests"
   ],
   "dependencies": {
+    "algoliasearch": "~3.8.1",
     "angular": "~1.4.5",
     "angular-stamplay": "*",
     "angular-ui-router": "~0.2.15",
     "bootswatch": "~3.3.5+3",
     "ng-file-upload": "~7.2.1",
-    "stamplay-js-sdk": "~1.2.9"
+    "stamplay-js-sdk": "~1.2.9",
+    "angular-bootstrap": "~0.13.4"
   }
 }
